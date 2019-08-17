@@ -1,0 +1,42 @@
+<!--
+    create_by: zhaoq_Hero
+    Date:   
+    csdn:https://blog.csdn.net/u013233097
+    github:https://github.com/zqHero
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+    <title>列表展示</title>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/zq.css"/>
+
+</head>
+<body>
+
+<header>展示列表</header>
+
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+
+<script type="text/javascript">
+    apiready = function () {
+        $api.fixStatusBar($api.dom('header'));
+        $api.fixTabBar($api.dom('footer'));
+
+        // 打开一个  Frame
+        api.openFrame({
+            name:"listFrame",
+            url:"./listFrame.html",
+            rect:{
+                y:$api.offset($api.dom("header")).h,
+            }
+        });
+    };
+</script>
+
+</html>

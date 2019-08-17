@@ -1,0 +1,104 @@
+<!--
+    create_by: zhaoq_Hero
+    Date:   
+    csdn:https://blog.csdn.net/u013233097
+    github:https://github.com/zqHero
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+    <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/zq.css"/>
+    <title>列表页 展示 Frame</title>
+
+    <style type="text/css">
+
+        ul li {
+            height: 52px;
+            background: #DDDDDD;
+            margin-bottom: 1px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <ul id="listDa">
+    </ul>
+</body>
+
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/zq.js"></script>
+
+<script type="text/javascript">
+    let pageNum = 0;
+    let listData = [];//记录数据
+    apiready = function () {
+        initListener(); //初始化 事件
+        api.refreshHeaderLoading();
+    };
+
+    onItemClick = function (index) {
+        alert(index);
+    };
+    renderList = function (data) {
+        data.data.forEach(function (item, index) {
+            listData.push(item);
+        });
+        //使用 for 循环  遍历数据
+        let strHtml = "";
+        listData.forEach(function (item, index) {
+            strHtml += '<li onclick="onItemClick(' + index + ')">';
+            strHtml += '<span>' + item.text + '-----' + item.index;
+            strHtml += '</span>';
+            strHtml += '</li>';
+        });
+        document.getElementById("listDa").innerHTML = strHtml;
+    };
+
+    initListener = function () {
+        api.setRefreshHeaderInfo({
+            loadingImg: 'widget://image/refresh.png',
+            bgColor: '#fff',
+            textColor: '#dddddd',
+            textDown: '下拉刷新...',
+            textUp: '松开刷新...'
+        }, function (ret, err) {
+            //执行刷新 方法：
+            pageNum = 0;
+            getListData(pageNum, function (data) {
+                api.refreshHeaderLoadDone();
+                api.toast({msg: data.msg});
+                if (data.code === 200) {
+                    listData = [];
+                    renderList(data);
+                }
+            })
+        });
+        api.addEventListener({
+            name: 'scrolltobottom',
+            extra: {
+                threshold: 150 //设置距离底部多少距离时触发，默认值为0，数字类型-->
+            }
+        }, function (ret, err) {
+            pageNum++;
+            getListData(pageNum, function (data) {
+                api.toast({msg: data.msg});
+                if(data.code === 200){
+                    renderList(data);
+                }
+            });
+        });
+    }
+</script>
+</html>
+
+
+
+

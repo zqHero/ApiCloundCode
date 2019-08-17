@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+<!--    <meta name="viewport"-->
+<!--          content="maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, initial-scale=1.0, width=device-width"/>-->
+<!--    <meta name="format-detection" content="telephone=no, email=no, date=no, address=no">-->
+
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5,-->
+<!--    maximum-scale=2.0, user-scalable=yes" />-->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>首页</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/zq.css"/>
+    <style>
+        .list li {
+            height: 52px;
+            width: 100%;
+            padding: 5px;
+            word-wrap: break-word;
+            background: #DDDDDD;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            color: #ff0000;
+            margin: 2px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <header>Demo 示例</header>
+
+    <ul class="list">
+        <li onclick="toListWin()">ApiClound列表展示</li>
+    </ul>
+
+    <footer><div>Copyright &copy;<a id="year" href="https://blog.csdn.net/u013233097/column/info/40831">zqHero</a><div></div></footer>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+    apiready = function () {
+        $api.fixStatusBar($api.dom('header'));
+        $api.fixTabBar($api.dom('footer'));
+    };
+
+    /**
+     *打开 列表界面
+     */
+    toListWin = function () {
+        api.openWin({
+            name:"listWin",
+            url:"./listDemo/listWin.html"
+        });
+    }
+</script>
+
+</html>

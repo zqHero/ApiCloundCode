@@ -1,0 +1,36 @@
+/**
+ * create_by: zhaoq_Hero
+ * Date: 
+ * csdn:https://blog.csdn.net/u013233097
+ * github:https://github.com/zqHero
+ */
+
+body{
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    background: #ffffff;
+}
+
+header{
+    height: 65px;
+    background: #2e6cff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #ff0000;
+}
+
+
+footer{
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+}
+
+footer div{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
